@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ex03_BaseApp</string>
+    <string name="strBtn1">버튼입니다</string>
+    <string name="strBtn2">네이트 홈페이지 열기</string>
+    <string name="strBtn3">911 응급전화 걸기</string>
+    <string name="strBtn4">갤러리 열기</string>
+    <string name="strBtn5">끝내기</string>
+    <string name="strCheck1">체크박스입니다</string>
+</resources>

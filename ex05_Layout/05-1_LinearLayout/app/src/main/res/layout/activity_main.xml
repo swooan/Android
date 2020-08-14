@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!--리니어 레이아웃의 orientation / gravity / layout_gravity-->
+
+<!--    <Button-->
+<!--        android:layout_width="110dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:text="버튼1"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:gravity="top|right"-->
+<!--        android:background="#88bb55"></Button>-->
+<!--    <Button-->
+<!--        android:layout_width="110dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:text="버튼2"-->
+<!--        android:layout_gravity="left"-->
+<!--        android:gravity="left|center"-->
+<!--        android:background="#88bb55"></Button>-->
+<!--    <Button-->
+<!--        android:layout_width="110dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:text="버튼3"-->
+<!--        android:layout_gravity="right"-->
+<!--        android:gravity="bottom|right"-->
+<!--        android:background="#88bb55"></Button>-->
+
+    <!--중복 레이아웃-->
+    <!--layout_weight : 여러개의 리니어 레이아웃을 사용할 경우 각 레이아웃의 크기 지정-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#ff0000"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ffff00"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#000000"
+                android:orientation="vertical">
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#0000ff"
+        android:orientation="vertical"></LinearLayout>
+
+
+</LinearLayout>

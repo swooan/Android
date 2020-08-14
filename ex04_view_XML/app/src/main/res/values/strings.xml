@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ex04_View_Xml</string>
+    <string name="button1">버튼 1</string>
+</resources>
