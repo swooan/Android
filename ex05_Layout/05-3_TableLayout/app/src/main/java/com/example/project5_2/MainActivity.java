@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         btnSub = (Button)findViewById(R.id.btnSub);
         btnMul = (Button)findViewById(R.id.btnMul);
         btnDiv = (Button)findViewById(R.id.btnDiv);
+        textResult = (TextView)findViewById(R.id.TextResult);
 
         for(i = 0; i < numBtnIDs.length; i++) {
             numButtons[i] = (Button)findViewById(numBtnIDs[i]);
@@ -73,8 +74,14 @@ public class MainActivity extends AppCompatActivity {
                 num1 = edit1.getText().toString();
                 num2 = edit2.getText().toString();
 
-                result = Integer.parseInt(num1) + Integer.parseInt(num2);
-                textResult.setText("계산 결과 : " + result.toString());
+                if(num1.equals("") || num2.equals("")) {
+                    Toast.makeText(getApplicationContext(),"숫자를 입력하세요", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    result = Integer.parseInt(num1) + Integer.parseInt(num2);
+                    textResult.setText("계산 결과 : " + result.toString());
+                }
+
                 return false;
             }
         });
@@ -84,8 +91,13 @@ public class MainActivity extends AppCompatActivity {
                 num1 = edit1.getText().toString();
                 num2 = edit2.getText().toString();
 
-                result = Integer.parseInt(num1) - Integer.parseInt(num2);
-                textResult.setText("계산 결과 : " + result.toString());
+                if(num1.equals("") || num2.equals("")) {
+                    Toast.makeText(getApplicationContext(),"숫자를 입력하세요", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    result = Integer.parseInt(num1) - Integer.parseInt(num2);
+                    textResult.setText("계산 결과 : " + result.toString());
+                }
                 return false;
             }
         });
@@ -95,8 +107,13 @@ public class MainActivity extends AppCompatActivity {
                 num1 = edit1.getText().toString();
                 num2 = edit2.getText().toString();
 
-                result = Integer.parseInt(num1) * Integer.parseInt(num2);
-                textResult.setText("계산 결과 : " + result.toString());
+                if(num1.equals("") || num2.equals("")) {
+                    Toast.makeText(getApplicationContext(),"숫자를 입력하세요", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    result = Integer.parseInt(num1) * Integer.parseInt(num2);
+                    textResult.setText("계산 결과 : " + result.toString());
+                }
                 return false;
             }
         });
@@ -106,8 +123,13 @@ public class MainActivity extends AppCompatActivity {
                 num1 = edit1.getText().toString();
                 num2 = edit2.getText().toString();
 
-                result = Integer.parseInt(num1) / Integer.parseInt(num2);
-                textResult.setText("계산 결과 : " + result.toString());
+                if(num1.equals("") || num2.equals("")) {
+                    Toast.makeText(getApplicationContext(),"숫자를 입력하세요", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    result = Integer.parseInt(num1) / Integer.parseInt(num2);
+                    textResult.setText("계산 결과 : " + result.toString());
+                }
                 return false;
             }
         });
