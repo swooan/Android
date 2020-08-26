@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#ffa500"
+        android:fontFamily="@font/fromdamim"
+        android:gravity="center|left"
+        android:paddingLeft="30dp"
+        android:text="@string/logo"
+        android:textColor="@color/white"
+        android:textSize="60dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/지역"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:clipChildren="true"
+            android:dropDownWidth="95dp"
+            android:entries="@array/location1"
+            android:scrollbarThumbVertical="@color/bg_main"
+            android:scrollbars="vertical" />
+
+        <Spinner
+            android:id="@+id/상세지역"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:clipChildren="true"
+            android:dropDownWidth="90dp"
+            android:entries="@array/location2"
+            android:scrollbarThumbVertical="@color/bg_main"
+            android:scrollbars="vertical" />
+
+        <EditText
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/search" />
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="30dp"
+            android:text="검색"
+            android:textColor="@color/white"
+            android:background="@color/button" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/border_all"
+            android:layout_marginTop="10dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/border_all"
+            android:layout_marginTop="10dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/border_all"
+            android:layout_marginTop="10dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/border_all"
+            android:layout_marginTop="10dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/border_all"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+</LinearLayout>
