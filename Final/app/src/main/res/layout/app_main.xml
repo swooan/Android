@@ -19,6 +19,7 @@
         android:textSize="60dp"></TextView>
 
     <View
+        android:id="@+id/top_horizontal"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_centerVertical="false"
@@ -26,22 +27,120 @@
         android:background="@drawable/gradient" />
 
     <View
+        android:id="@+id/center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_centerVertical="true"
         android:background="@drawable/gradient" />
 
     <View
+        android:id="@+id/center_vertical"
         android:layout_width="5dp"
         android:layout_height="420dp"
         android:layout_centerInParent="true"
         android:background="@drawable/gradient" />
 
     <View
+        android:id="@+id/bot_horizontal"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_centerVertical="false"
         android:layout_marginTop="570dp"
         android:background="@drawable/gradient" />
+
+    <ImageView
+        android:id="@+id/img_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/center_horizontal"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="70dp"
+        android:layout_toLeftOf="@id/center_vertical"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:src="@drawable/search" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/center_horizontal"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="30dp"
+        android:text="가게 검색"
+        android:textColor="@color/button"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/img_reservation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/center_horizontal"
+        android:layout_alignBottom="@id/img_search"
+        android:layout_marginLeft="60dp"
+        android:layout_toRightOf="@id/center_vertical"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:src="@drawable/calendar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/center_horizontal"
+        android:layout_toRightOf="@id/center_vertical"
+        android:layout_marginLeft="70dp"
+        android:layout_marginBottom="30dp"
+        android:text="예약 정보"
+        android:textColor="@color/button"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/img_qr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/center_horizontal"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_toLeftOf="@id/center_vertical"
+        android:layout_alignLeft="@id/img_search"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:src="@drawable/qr" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/center_horizontal"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="160dp"
+        android:text="QR 인증"
+        android:textColor="@color/button"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/img_how"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/center_horizontal"
+        android:layout_alignLeft="@id/img_reservation"
+        android:layout_marginTop="40dp"
+        android:layout_toRightOf="@id/center_vertical"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:src="@drawable/how" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/center_horizontal"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="157dp"
+        android:text="설명서"
+        android:textColor="@color/button"
+        android:textSize="20dp" />
+
 
 </RelativeLayout>

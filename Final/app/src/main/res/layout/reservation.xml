@@ -23,36 +23,4 @@
 
     </FrameLayout>
 
-   <!-- <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/main"
-        android:gravity="center|left"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btn_reserv_top"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/button"
-                android:text="예약하기"
-                android:textColor="@color/white" />
-
-            <Button
-                android:id="@+id/btn_reserv_bot"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/button"
-                android:text="선주문 및 결제"
-                android:textColor="@color/white" />
-
-        </LinearLayout>
-    </LinearLayout>-->
 </LinearLayout>
