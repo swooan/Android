@@ -3,4 +3,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#ffa500"
+        android:fontFamily="@font/fromdamim"
+        android:gravity="center|left"
+        android:paddingLeft="30dp"
+        android:text="@string/logo"
+        android:textColor="@color/white"
+        android:textSize="60dp" />
+
 </LinearLayout>

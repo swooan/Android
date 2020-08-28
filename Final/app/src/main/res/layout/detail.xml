@@ -54,7 +54,7 @@
         app:tabGravity="fill"
         app:tabMode="fixed">
 
-        <com.google.android.material.tabs.TabItem
+        <!--<com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="tab1"/>
@@ -67,7 +67,7 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="tab3"/>
+            android:text="tab3"/>-->
 
     </com.google.android.material.tabs.TabLayout>
 
