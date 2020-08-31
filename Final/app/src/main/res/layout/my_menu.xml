@@ -5,14 +5,14 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:background="#ffa500"
         android:fontFamily="@font/fromdamim"
         android:gravity="center|left"
         android:paddingLeft="30dp"
         android:text="@string/logo"
         android:textColor="@color/white"
-        android:textSize="60dp"></TextView>
+        android:textSize="30dp"></TextView>
 
     <ScrollView
         android:layout_width="match_parent"
