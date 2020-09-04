@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fragment.My_Info_fragment.my_info_reserved"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 내 예약 정보 "
+        android:layout_marginTop="20dp"
+        android:gravity="center|top"
+        android:textSize="36dp"
+        android:fontFamily="@font/designhousebold"
+        android:textColor="#000"/>
+
+    <CalendarView
+        android:id="@+id/my_info_cal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

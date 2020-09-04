@@ -1,0 +1,134 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fragment.reservation_fragment.reserv_simple">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="511dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <EditText
+            android:id="@+id/signup_id"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/input_register_bg"
+            android:hint="인원"
+            android:imeOptions="actionUnspecified"
+            android:importantForAutofill="no"
+            android:inputType="textCapWords"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_register"
+            android:textColorHint="@color/input_register_hint" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/gradient" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/txt_date"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/input_register_bg"
+                android:hint="날짜"
+                android:imeOptions="actionUnspecified"
+                android:importantForAutofill="no"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/input_register"
+                android:textColorHint="@color/input_register_hint" />
+
+            <Button
+                android:id="@+id/btn_calendar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"></Button>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/gradient" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/txt_time"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/input_register_bg"
+                android:hint="시간"
+                android:imeOptions="actionUnspecified"
+                android:importantForAutofill="no"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/input_register"
+                android:textColorHint="@color/input_register_hint" />
+
+            <Button
+                android:id="@+id/btn_time"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/gradient" />
+
+        <Button
+            android:id="@+id/btn_reserv1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="#f05e23"
+            android:text="예약하기"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_order"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="#f05e23"
+            android:text="선주문 및 결제"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_back1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="#f05e23"
+            android:text="돌아가기"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</FrameLayout>
