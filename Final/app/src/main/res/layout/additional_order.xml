@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#ffa500"
-        android:fontFamily="@font/fromdamim"
-        android:gravity="center|left"
-        android:paddingLeft="30dp"
-        android:text="@string/logo"
-        android:textColor="@color/white"
-        android:textSize="30dp"></TextView>
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffa500"
+            android:fontFamily="@font/fromdamim"
+            android:layout_gravity="center|left"
+            android:paddingLeft="30dp"
+            android:layout_marginRight="270dp"
+            android:text="@string/logo"
+            android:textColor="@color/white"
+            android:textSize="30dp"></TextView>
+
+        <ImageButton
+            android:id="@+id/btn_sidebar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:layout_weight="0"
+
+            android:background="@color/main"
+            app:srcCompat="@drawable/triple_lines32" />
+
+
+    </LinearLayout>
+
 
     <ScrollView
         android:layout_width="match_parent"

@@ -1,13 +1,15 @@
 package com.example.final_app;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
+import res.LoadingActivity;
 
-public class search extends AppCompatActivity {
+public class search extends LoadingActivity {
 
     View view;
 
@@ -15,6 +17,8 @@ public class search extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search);
+
+        startProgress();
 
         view = (View)findViewById(R.id.toTheDetail1);
         view.setOnClickListener(new View.OnClickListener() {
@@ -28,5 +32,17 @@ public class search extends AppCompatActivity {
                 startActivityForResult(intent, 101);
             }
         });
+    }
+
+    private void startProgress() {
+
+        progressON("로딩중......");
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressOFF();
+            }
+        }, 3500);
     }
 }

@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import res.LoadingActivity;
+
+public class MainActivity extends LoadingActivity {
 
     ImageView img_search, img_reservation, img_qr, img_how;
     TextView txt_search, txt_reservation, txt_qr, txt_how;

@@ -4,17 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.os.Handler;
 
 import com.google.android.material.tabs.TabLayout;
 
+import res.LoadingActivity;
 import res.detail_VPAdapter;
 
-public class shop_detail extends AppCompatActivity {
+public class shop_detail extends LoadingActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shop_detail);
+
 
         TabLayout tabLayout = findViewById(R.id.detail_tab);
 
@@ -49,4 +53,6 @@ public class shop_detail extends AppCompatActivity {
             }
         });
     }
+
+
 }
