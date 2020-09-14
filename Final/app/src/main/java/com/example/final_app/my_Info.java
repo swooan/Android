@@ -3,6 +3,7 @@ package com.example.final_app;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
@@ -15,6 +16,9 @@ public class my_Info extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_info);
+
+        Intent intent = new Intent(this, Loading.class);
+        startActivity(intent);
 
         TabLayout tab = findViewById(R.id.my_info_tab);
 

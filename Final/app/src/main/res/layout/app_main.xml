@@ -7,6 +7,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        android:id="@+id/id_main">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -161,6 +165,29 @@
         android:layout_marginRight="32dp"
         android:background="@color/main"
         app:srcCompat="@drawable/triple_lines32" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_silde"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:id="@+id/out_sidebar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.75"
+            android:background="#202735"/>
+
+        <FrameLayout
+            android:id="@+id/view_sildebar"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"/>
+
+    </FrameLayout>
 
 
 </RelativeLayout>

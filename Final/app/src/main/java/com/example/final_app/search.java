@@ -7,9 +7,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
-import res.LoadingActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class search extends LoadingActivity {
+
+public class search extends AppCompatActivity {
 
     View view;
 
@@ -18,7 +19,8 @@ public class search extends LoadingActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search);
 
-        startProgress();
+        Intent intent = new Intent(this, Loading.class);
+        startActivity(intent);
 
         view = (View)findViewById(R.id.toTheDetail1);
         view.setOnClickListener(new View.OnClickListener() {
@@ -34,15 +36,4 @@ public class search extends LoadingActivity {
         });
     }
 
-    private void startProgress() {
-
-        progressON("로딩중......");
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                progressOFF();
-            }
-        }, 3500);
-    }
 }

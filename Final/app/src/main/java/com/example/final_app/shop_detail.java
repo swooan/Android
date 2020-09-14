@@ -3,15 +3,16 @@ package com.example.final_app;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
 import com.google.android.material.tabs.TabLayout;
 
-import res.LoadingActivity;
+
 import res.detail_VPAdapter;
 
-public class shop_detail extends LoadingActivity {
+public class shop_detail extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,8 @@ public class shop_detail extends LoadingActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shop_detail);
 
+        Intent intent = new Intent(this, Loading.class);
+        startActivity(intent);
 
         TabLayout tabLayout = findViewById(R.id.detail_tab);
 

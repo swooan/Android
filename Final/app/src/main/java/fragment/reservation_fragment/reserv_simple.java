@@ -4,6 +4,8 @@ package fragment.reservation_fragment;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -104,6 +106,7 @@ public class reserv_simple extends Fragment {
                     }
                 }, hour, minute, false); // true의 경우 24시간 형식의 TimePicker 출현
                 mTimePicker.setTitle("Select Time");
+                mTimePicker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 mTimePicker.show();
             }
         });
