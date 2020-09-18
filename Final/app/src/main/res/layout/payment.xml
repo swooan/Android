@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#ffa500"
@@ -23,7 +24,7 @@
             android:textSize="30dp"></TextView>
 
         <ImageButton
-            android:id="@+id/btn_sidebar5"
+            android:id="@+id/btn_sidebar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|right"
@@ -32,7 +33,40 @@
             android:background="@color/main"
             app:srcCompat="@drawable/triple_lines32" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/top_bar"
+        android:layout_marginTop="30dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:background="@drawable/border_all"/>
+
+        <Button
+            android:id="@+id/btn_pay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="결제하기"
+            android:textColor="@color/white"
+            android:background="@color/button"
+            android:gravity="top|center"
+            android:layout_marginVertical="10dp"/>
+
+        <Button
+            android:id="@+id/btn_comp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="완료"
+            android:textColor="@color/white"
+            android:background="@color/button"
+            android:gravity="center|top"
+            android:layout_marginVertical="10dp"/>
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

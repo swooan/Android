@@ -2,6 +2,7 @@ package com.example.final_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,6 +46,12 @@ public class qr extends AppCompatActivity {
                 Log.v("qrcode :::::::::::", "no contents");
                 finish();
             } else { //QR코드, 내용 존재
+                Intent intent = new Intent();
+                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.after_qr");
+
+                intent.setComponent(name);
+                startActivityForResult(intent,101);
+
                 try {
                     /* QR 코드 내용*/
                     String temp = result.getContents();

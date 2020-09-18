@@ -205,6 +205,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        outsidebar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                closeMenu();
+            }
+        });
+
         sidebar.setEventListener(new sidebar.EventListener() {
 
             @Override

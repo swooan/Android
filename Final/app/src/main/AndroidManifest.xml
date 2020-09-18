@@ -29,9 +29,13 @@
         android:roundIcon="@mipmap/bobpool_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".sidebar"></activity>
-        <activity android:name=".Loading"
-            android:theme="@android:style/Theme.Dialog"/>
+        <meta-data android:name="android.max_aspect" android:value="2.1" />
+        <activity android:name=".additional_order"></activity>
+        <activity android:name=".after_qr"></activity>
+        <activity android:name=".sidebar" />
+        <activity
+            android:name=".Loading"
+            android:theme="@android:style/Theme.Dialog" />
         <activity
             android:name=".how"
             android:theme="@android:style/Theme.Dialog" />

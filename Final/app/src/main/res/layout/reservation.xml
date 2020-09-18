@@ -1,46 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#ffa500"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:id="@+id/id_main"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:background="#ffa500"
-            android:fontFamily="@font/fromdamim"
-            android:layout_gravity="center|left"
-            android:paddingLeft="30dp"
-            android:layout_marginRight="270dp"
-            android:text="@string/logo"
-            android:textColor="@color/white"
-            android:textSize="30dp"></TextView>
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/btn_sidebar6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|right"
-            android:layout_weight="0"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffa500"
+                android:fontFamily="@font/fromdamim"
+                android:layout_gravity="center|left"
+                android:paddingLeft="30dp"
+                android:layout_marginRight="270dp"
+                android:text="@string/logo"
+                android:textColor="@color/white"
+                android:textSize="30dp"></TextView>
 
-            android:background="@color/main"
-            app:srcCompat="@drawable/triple_lines32" />
+            <ImageButton
+                android:id="@+id/btn_sidebar6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_weight="0"
 
+                android:background="@color/main"
+                app:srcCompat="@drawable/triple_lines32" />
+
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/reserv_frame"
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:layout_marginVertical="10dp">
+
+        </FrameLayout>
 
     </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/reserv_frame"
+        android:id="@+id/fl_silde"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
-        android:layout_marginVertical="10dp">
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.75"
+            android:background="#202735" />
+
+        <FrameLayout
+            android:id="@+id/out_sidebar"
+            android:layout_width="132dp"
+            android:layout_height="match_parent"/>
+
+        <FrameLayout
+            android:id="@+id/view_sildebar"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"/>
 
     </FrameLayout>
 
-</LinearLayout>
+</RelativeLayout>

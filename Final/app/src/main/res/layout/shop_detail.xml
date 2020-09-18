@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/id_main"
+        android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -96,5 +102,31 @@
         android:id="@+id/viewpager"
         android:background="@color/colorPrimary"/>
 
+    </LinearLayout>
 
-</LinearLayout>
+    <FrameLayout
+        android:id="@+id/fl_silde"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.75"
+            android:background="#202735" />
+
+        <FrameLayout
+            android:id="@+id/out_sidebar"
+            android:layout_width="132dp"
+            android:layout_height="match_parent"/>
+
+        <FrameLayout
+            android:id="@+id/view_sildebar"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"/>
+
+    </FrameLayout>
+
+</RelativeLayout>
