@@ -28,10 +28,27 @@
         android:label="밥풀"
         android:roundIcon="@mipmap/bobpool_icon_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <meta-data android:name="android.max_aspect" android:value="2.1" />
-        <activity android:name=".additional_order"></activity>
-        <activity android:name=".after_qr"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".personal_info" />
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+
+        <activity android:name=".Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".additional_order"
+            android:usesCleartextTraffic="true" />
+        <activity
+            android:name=".after_qr"
+            android:usesCleartextTraffic="true" />
         <activity android:name=".sidebar" />
         <activity
             android:name=".Loading"

@@ -12,8 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+
+import model.ShopVo;
+import res.DBConnection.Custom_Adapter;
+import res.network.NetworkSearch;
 
 
 public class search extends AppCompatActivity implements View.OnClickListener {
@@ -31,6 +38,9 @@ public class search extends AppCompatActivity implements View.OnClickListener {
     private String TAG = "search";
 
     private Context mContext = search.this;
+
+    private ListView listView;
+    private Custom_Adapter adapter;
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -64,6 +74,7 @@ public class search extends AppCompatActivity implements View.OnClickListener {
         mainLayout = findViewById(R.id.id_main);
         viewLayout = findViewById(R.id.fl_silde);
         sideLayout = findViewById(R.id.view_sildebar);
+        listView = (ListView)findViewById(R.id.listView);
 
 
         addSideView();
@@ -71,7 +82,16 @@ public class search extends AppCompatActivity implements View.OnClickListener {
         Intent intent = new Intent(this, Loading.class);
         startActivity(intent);
 
-        view = (View)findViewById(R.id.toTheDetail1);
+        // 어댑터 만들기 -> 3요소 필요 (위치, 디자인, 데이터)
+        adapter = new Custom_Adapter(search.this, //위치
+                R.layout.adapter_search, // 디자인
+                new ArrayList<ShopVo>()); // 데이터
+
+        listView.setAdapter(adapter);
+
+        new NetworkSearch((Custom_Adapter) listView.getAdapter()).execute(""); // 전체 불러오기
+
+        /*view = (View)findViewById(R.id.toTheDetail1);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,7 +102,7 @@ public class search extends AppCompatActivity implements View.OnClickListener {
                 intent.setComponent(name);
                 startActivityForResult(intent, 101);
             }
-        });
+        });*/
     }
     private void addSideView(){
 
@@ -116,6 +136,20 @@ public class search extends AppCompatActivity implements View.OnClickListener {
                 Log.e(TAG, "btnLevel1");
 
                 closeMenu();
+            }
+
+            @Override
+            public void btnLogin(){
+                Log.e(TAG, "btnLogin");
+
+                closeMenu();
+
+                Intent intent1 = new Intent();
+
+                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.Login");
+
+                intent1.setComponent(name);
+                startActivityForResult(intent1, 101);
             }
         });
     }

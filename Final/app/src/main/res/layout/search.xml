@@ -84,38 +84,10 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="vertical">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@drawable/border_all"
-            android:layout_marginTop="10dp"
-            android:id="@+id/toTheDetail1"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@drawable/border_all"
-            android:layout_marginTop="10dp" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@drawable/border_all"
-            android:layout_marginTop="10dp" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@drawable/border_all"
-            android:layout_marginTop="10dp" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@drawable/border_all"
-            android:layout_marginTop="10dp" />
-    </LinearLayout>
+        android:layout_height="match_parent" />
 
     </LinearLayout>
 

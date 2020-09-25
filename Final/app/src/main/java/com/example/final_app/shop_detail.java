@@ -3,6 +3,7 @@ package com.example.final_app;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,7 +34,6 @@ public class shop_detail extends AppCompatActivity implements View.OnClickListen
         mainLayout = findViewById(R.id.id_main);
         viewLayout = findViewById(R.id.fl_silde);
         sideLayout = findViewById(R.id.view_sildebar);
-
 
         addSideView();
 
@@ -139,6 +139,20 @@ public class shop_detail extends AppCompatActivity implements View.OnClickListen
                 Log.e(TAG, "btnLevel1");
 
                 closeMenu();
+            }
+
+            @Override
+            public void btnLogin(){
+                Log.e(TAG, "btnLogin");
+
+                closeMenu();
+
+                Intent intent1 = new Intent();
+
+                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.Login");
+
+                intent1.setComponent(name);
+                startActivityForResult(intent1, 101);
             }
         });
     }

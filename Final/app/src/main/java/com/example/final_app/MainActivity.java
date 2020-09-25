@@ -9,16 +9,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import fragment.sidebar3;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+public class MainActivity extends AppCompatActivity {
 
     private String TAG = "MainActivity";
 
@@ -31,6 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Boolean isMenuShow = false;
     private Boolean isExitFlag = false;
+
+    ImageButton side_menu;
+
+    sidebar3 sidebar = new sidebar3();
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -46,7 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onBackPressed() {
 
         if(isMenuShow){
-            closeMenu();
+            sidebar.closeMenu();
+            /*closeMenu();*/
         }else{
 
             if(isExitFlag){
@@ -73,18 +82,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_main);
 
-        findViewById(R.id.btn_sidebar1).setOnClickListener(this);
-
-        outsidebar = findViewById(R.id.out_sidebar);
-        mainLayout = findViewById(R.id.id_main);
-        viewLayout = findViewById(R.id.fl_silde);
-        sideLayout = findViewById(R.id.view_sildebar);
-
-
-        addSideView();
-
         Intent intent = new Intent(this, opening.class);
         startActivity(intent);
+
+        /*findViewById(R.id.btn_sidebar1).setOnClickListener(this);*/
+        viewLayout = findViewById(R.id.fl_silde);
+        sideLayout = findViewById(R.id.view_sildebar);
+        mainLayout = findViewById(R.id.id_main);
+        outsidebar = findViewById(R.id.out_sidebar);
+
+       /* addSideView();*/
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.view_sildebar, sidebar).commit();
 
         img_search = (ImageView)findViewById(R.id.img_search);
         img_reservation = (ImageView)findViewById(R.id.img_reservation);
@@ -95,6 +104,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txt_reservation = (TextView)findViewById(R.id.txt_reservation);
         txt_qr = (TextView)findViewById(R.id.txt_qr);
         txt_how = (TextView)findViewById(R.id.txt_how);
+
+
 
         img_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,9 +202,50 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivityForResult(intent1, 101);
             }
         });
+
+        if(isMenuShow == true) {
+            outsidebar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    sidebar.closeMenu();
+                    Log.i("outsidebar"," : 눌렸습니다.");
+                }
+            });
+        }
+
+        side_menu = (ImageButton)findViewById(R.id.btn_sidebar1);
+        side_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sidebar.showMenu();
+            }
+        });
     }
 
-    private void addSideView(){
+    public void closeMenu(Animation animation) {
+        isMenuShow = false;
+        sideLayout.startAnimation(animation);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                viewLayout.setVisibility(View.GONE);
+                viewLayout.setClickable(false);
+                mainLayout.setClickable(true);
+            }
+        }, 450);
+    }
+
+    public void showMenu(Animation animation){
+
+        isMenuShow = true;
+        sideLayout.startAnimation(animation);
+        viewLayout.setVisibility(View.VISIBLE);
+        viewLayout.setClickable(true);
+        mainLayout.setClickable(false);
+        Log.e(TAG, "메뉴버튼 클릭");
+    }
+
+/*    private void addSideView(){
 
         sidebar sidebar = new sidebar(mContext);
         sideLayout.addView(sidebar);
@@ -226,6 +278,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 closeMenu();
             }
+
+            @Override
+            public void btnLogin(){
+                Log.e(TAG, "btnLogin");
+
+                closeMenu();
+
+                Intent intent1 = new Intent();
+
+                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.Login");
+
+                intent1.setComponent(name);
+                startActivityForResult(intent1, 101);
+            }
         });
     }
 
@@ -235,7 +301,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (view.getId()){
 
-            case R.id.btn_sidebar1 :
+            case R.id.btn_sidebar7 :
 
                 showMenu();
                 break;
@@ -267,5 +333,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         viewLayout.setEnabled(true);
         mainLayout.setEnabled(false);
         Log.e(TAG, "메뉴버튼 클릭");
-    }
+    }*/
+
+
 }
