@@ -2,33 +2,144 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
     tools:context="fragment.detail_fragment.detail_reservation"
-    android:orientation="vertical">
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="5dp">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:text="현재 좌석 현황"
-        android:gravity="center"
-        android:textSize="20dp"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:text="예약 현황"
-        android:gravity="center"
-        android:textSize="20dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:text="예약하기"
-        android:textColor="@color/white"
-        android:textSize="15dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:background="@color/button"
-        android:id="@+id/toTheReservation" />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="예약자 수"/>
+
+        <TextView
+            android:id="@+id/shop_reserve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#000"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="전화번호"/>
+
+        <TextView
+            android:id="@+id/shop_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#000"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="운영시간"/>
+
+        <TextView
+            android:id="@+id/shop_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#000"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="테이블 종류"/>
+
+        <TextView
+            android:id="@+id/shop_tb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#000"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="휴무일"/>
+
+        <TextView
+            android:id="@+id/shop_close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#000"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="주차"/>
+
+        <TextView
+            android:id="@+id/shop_car"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#000"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/toTheReservation"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:background="@color/button"
+            android:gravity="center"
+            android:text="예약하기"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+    </LinearLayout>
 
 </LinearLayout>

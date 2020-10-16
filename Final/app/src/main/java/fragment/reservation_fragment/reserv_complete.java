@@ -53,14 +53,7 @@ public class reserv_complete extends Fragment {
         complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-
-                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.search");
-
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                intent.setComponent(name);
-                startActivityForResult(intent, 101);
+                getActivity().finish();
             }
         });
 

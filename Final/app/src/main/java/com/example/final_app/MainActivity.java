@@ -1,5 +1,6 @@
 package com.example.final_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ComponentName;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import fragment.sidebar3;
+import res.resources;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton side_menu;
 
     sidebar3 sidebar = new sidebar3();
+
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -74,26 +77,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    ImageView img_search, img_reservation, img_qr, img_how;
+    ImageView img_search, img_reservation, img_qr, img_how, img_search_location;
     TextView txt_search, txt_reservation, txt_qr, txt_how;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_main);
+        resources.gets.put("login", false);
+        resources.gets.put("sidebar", sidebar);
+
 
         Intent intent = new Intent(this, opening.class);
         startActivity(intent);
 
-        /*findViewById(R.id.btn_sidebar1).setOnClickListener(this);*/
         viewLayout = findViewById(R.id.fl_silde);
         sideLayout = findViewById(R.id.view_sildebar);
         mainLayout = findViewById(R.id.id_main);
         outsidebar = findViewById(R.id.out_sidebar);
 
-       /* addSideView();*/
+        getSupportFragmentManager().beginTransaction().replace(R.id.view_sildebar, sidebar).detach(sidebar).attach(sidebar).commit();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.view_sildebar, sidebar).commit();
 
         img_search = (ImageView)findViewById(R.id.img_search);
         img_reservation = (ImageView)findViewById(R.id.img_reservation);
@@ -105,89 +109,112 @@ public class MainActivity extends AppCompatActivity {
         txt_qr = (TextView)findViewById(R.id.txt_qr);
         txt_how = (TextView)findViewById(R.id.txt_how);
 
-
-
         img_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resources.gets.put("flag", true);
                 Intent intent1 = new Intent();
 
-                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.search");
+                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.search_menu");
 
                 intent1.setComponent(name);
-                startActivityForResult(intent1,101);
+                startActivityForResult(intent1, 101);
             }
         });
 
         txt_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resources.gets.put("flag", true);
+
                 Intent intent1 = new Intent();
 
-                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.search");
+                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.search_menu");
 
                 intent1.setComponent(name);
-                startActivityForResult(intent1,101);
+                startActivityForResult(intent1, 101);
+
             }
         });
 
         img_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent intent1 = new Intent();
+                if((Boolean) resources.gets.get("login")) {
+                    Intent intent1 = new Intent();
 
-                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.my_Info");
+                    ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.my_Info");
 
-                intent1.setComponent(name);
-               startActivityForResult(intent1,101);
+                    intent1.setComponent(name);
+                    startActivityForResult(intent1, 101);
+                } else {
+                        Toast.makeText(MainActivity.this, "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         txt_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent intent1 = new Intent();
 
-                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.my_Info");
+                if((Boolean) resources.gets.get("login")) {
+                    Intent intent1 = new Intent();
 
-                intent1.setComponent(name);
-               startActivityForResult(intent1,101);
+                    ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.my_Info");
+
+                    intent1.setComponent(name);
+                    startActivityForResult(intent1, 101);
+                } else {
+                    Toast.makeText(MainActivity.this, "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         img_qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent();
+                if((Boolean) resources.gets.get("login")) {
+                    Intent intent1 = new Intent();
 
-                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.qr");
+                    ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.qr");
 
-                intent1.setComponent(name);
-                startActivityForResult(intent1, 101);
+                    intent1.setComponent(name);
+                    startActivityForResult(intent1, 101);
+                } else {
+                    Toast.makeText(MainActivity.this, "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         txt_qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent();
+                if((Boolean) resources.gets.get("login")) {
+                    Intent intent1 = new Intent();
 
-                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.qr");
+                    ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.qr");
 
-                intent1.setComponent(name);
-                startActivityForResult(intent1, 101);
+                    intent1.setComponent(name);
+                    startActivityForResult(intent1, 101);
+                } else {
+                    Toast.makeText(MainActivity.this, "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         img_how.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent();
+                if((Boolean) resources.gets.get("login")) {
+                    Intent intent1 = new Intent();
 
-                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.how");
+                    ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.how");
 
-                intent1.setComponent(name);
-                startActivityForResult(intent1, 101);
+                    intent1.setComponent(name);
+                    startActivityForResult(intent1, 101);
+                } else {
+                    Toast.makeText(MainActivity.this, "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -244,96 +271,5 @@ public class MainActivity extends AppCompatActivity {
         mainLayout.setClickable(false);
         Log.e(TAG, "메뉴버튼 클릭");
     }
-
-/*    private void addSideView(){
-
-        sidebar sidebar = new sidebar(mContext);
-        sideLayout.addView(sidebar);
-
-        viewLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        outsidebar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                closeMenu();
-            }
-        });
-
-        sidebar.setEventListener(new sidebar.EventListener() {
-
-            @Override
-            public void btnCancel() {
-                Log.e(TAG, "btnCancel");
-                closeMenu();
-            }
-
-            @Override
-            public void btnLevel1() {
-                Log.e(TAG, "btnLevel1");
-
-                closeMenu();
-            }
-
-            @Override
-            public void btnLogin(){
-                Log.e(TAG, "btnLogin");
-
-                closeMenu();
-
-                Intent intent1 = new Intent();
-
-                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.Login");
-
-                intent1.setComponent(name);
-                startActivityForResult(intent1, 101);
-            }
-        });
-    }
-
-
-    @Override
-    public void onClick(View view) {
-
-        switch (view.getId()){
-
-            case R.id.btn_sidebar7 :
-
-                showMenu();
-                break;
-        }
-
-    }
-
-    public void closeMenu(){
-
-        isMenuShow = false;
-        Animation slide = AnimationUtils.loadAnimation(mContext, R.anim.sidebar_hidden);
-        sideLayout.startAnimation(slide);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                viewLayout.setVisibility(View.GONE);
-                viewLayout.setEnabled(false);
-                mainLayout.setEnabled(true);
-            }
-        }, 450);
-    }
-
-    public void showMenu(){
-
-        isMenuShow = true;
-        Animation slide = AnimationUtils.loadAnimation(this, R.anim.sidebar_show);
-        sideLayout.startAnimation(slide);
-        viewLayout.setVisibility(View.VISIBLE);
-        viewLayout.setEnabled(true);
-        mainLayout.setEnabled(false);
-        Log.e(TAG, "메뉴버튼 클릭");
-    }*/
-
 
 }

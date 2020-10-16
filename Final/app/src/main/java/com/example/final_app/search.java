@@ -1,18 +1,22 @@
 package com.example.final_app;
 
-import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,10 +24,13 @@ import java.util.ArrayList;
 
 import model.ShopVo;
 import res.DBConnection.Custom_Adapter;
+import res.network.NetworkPhoto;
 import res.network.NetworkSearch;
+import fragment.sidebar3;
+import res.resources;
 
 
-public class search extends AppCompatActivity implements View.OnClickListener {
+public class search extends AppCompatActivity implements resources{
 
     View view;
 
@@ -41,6 +48,8 @@ public class search extends AppCompatActivity implements View.OnClickListener {
 
     private ListView listView;
     private Custom_Adapter adapter;
+    private sidebar3 sidebar = new sidebar3(this);
+    TextView searchTV;
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -56,7 +65,7 @@ public class search extends AppCompatActivity implements View.OnClickListener {
     public void onBackPressed() {
 
         if (isMenuShow) {
-            closeMenu();
+            sidebar.closeMenu();
         }
         else{
             finish();
@@ -68,19 +77,121 @@ public class search extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search);
 
-        findViewById(R.id.btn_sidebar7).setOnClickListener(this);
-
         outsidebar = findViewById(R.id.out_sidebar);
         mainLayout = findViewById(R.id.id_main);
         viewLayout = findViewById(R.id.fl_silde);
         sideLayout = findViewById(R.id.view_sildebar);
-        listView = (ListView)findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.listView);
+        searchTV = (TextView) findViewById(R.id.search);
+
+        final int menu = getIntent().getExtras().getInt("menu");
+
+        final Spinner loc = (Spinner) findViewById(R.id.loc);
 
 
-        addSideView();
+        final Spinner loc_detail = (Spinner) findViewById(R.id.loc_detail);
+        if (menu == 1){
+        loc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 0){
+                    loc_detail.setVisibility(View.GONE);
+                }else{
+                    if (position == 1) {
+                        ArrayAdapter s1 = new ArrayAdapter<String>(search.this, android.R.layout.simple_spinner_item, (String[]) getResources().getStringArray(R.array.location1_1));
+                        s1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        loc_detail.setAdapter(s1);
+                    } else if (position == 2) {
+                        ArrayAdapter s2 = new ArrayAdapter<String>(search.this, android.R.layout.simple_spinner_item, (String[]) getResources().getStringArray(R.array.location1_2));
+                        s2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        loc_detail.setAdapter(s2);
+                    } else if (position == 3) {
+                        ArrayAdapter s3 = new ArrayAdapter<String>(search.this, android.R.layout.simple_spinner_item, (String[]) getResources().getStringArray(R.array.location1_3));
+                        s3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        loc_detail.setAdapter(s3);
+                    } else if (position == 4) {
+                        ArrayAdapter s4 = new ArrayAdapter<String>(search.this, android.R.layout.simple_spinner_item, (String[]) getResources().getStringArray(R.array.location1_4));
+                        s4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        loc_detail.setAdapter(s4);
+                    } else if (position == 5) {
+                        ArrayAdapter s5 = new ArrayAdapter<String>(search.this, android.R.layout.simple_spinner_item, (String[]) getResources().getStringArray(R.array.location1_5));
+                        s5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        loc_detail.setAdapter(s5);
+                    } else if (position == 6) {
+                        ArrayAdapter s6 = new ArrayAdapter<String>(search.this, android.R.layout.simple_spinner_item, (String[]) getResources().getStringArray(R.array.location1_6));
+                        s6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        loc_detail.setAdapter(s6);
+                    } else if (position == 7) {
+                        ArrayAdapter s7 = new ArrayAdapter<String>(search.this, android.R.layout.simple_spinner_item, (String[]) getResources().getStringArray(R.array.location1_7));
+                        s7.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        loc_detail.setAdapter(s7);
+                    } else if (position == 8) {
+                        ArrayAdapter s8 = new ArrayAdapter<String>(search.this, android.R.layout.simple_spinner_item, (String[]) getResources().getStringArray(R.array.location1_8));
+                        s8.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        loc_detail.setAdapter(s8);
+                    } else if (position == 9) {
+                        ArrayAdapter s9 = new ArrayAdapter<String>(search.this, android.R.layout.simple_spinner_item, (String[]) getResources().getStringArray(R.array.location1_9));
+                        s9.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        loc_detail.setAdapter(s9);
+                    }
+                    loc_detail.setVisibility(View.VISIBLE);
+                }
 
-        Intent intent = new Intent(this, Loading.class);
-        startActivity(intent);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    } else if(menu == 2) {
+            loc_detail.setVisibility(View.GONE);
+            ArrayAdapter s = new ArrayAdapter<String>(search.this, android.R.layout.simple_spinner_item, (String[]) getResources().getStringArray(R.array.food));
+            s.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            loc.setAdapter(s);
+        }
+
+        Button btnSearch = (Button)findViewById(R.id.btnSearch);
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resources.gets.put("flag", false);
+                if(menu == 1) {
+                    if(TextUtils.isEmpty(searchTV.getText())){
+                        if (loc.getSelectedItem().toString().equals("전체")) {
+                            new NetworkSearch((Custom_Adapter) listView.getAdapter(), search.this).execute("?loc=전체");
+                        } else {
+                            new NetworkSearch((Custom_Adapter) listView.getAdapter(), search.this).execute("?loc=" + loc_detail.getSelectedItem().toString());
+                        }
+                    }else{
+                        if (loc.getSelectedItem().toString().equals("전체")) {
+                            new NetworkSearch((Custom_Adapter) listView.getAdapter(), search.this).execute("?loc=전체&search="+searchTV.getText());
+                        } else {
+                            new NetworkSearch((Custom_Adapter) listView.getAdapter(), search.this).execute("?loc=" + loc_detail.getSelectedItem().toString()+"&search="+searchTV.getText());
+                        }
+                    }
+                }
+                else if(menu == 2){
+                    if(TextUtils.isEmpty(searchTV.getText())){
+                            new NetworkSearch((Custom_Adapter) listView.getAdapter(), search.this).execute("?food_type="+loc.getSelectedItem().toString());
+                    }else{
+                            new NetworkSearch((Custom_Adapter) listView.getAdapter(), search.this).execute("?food_type="+loc.getSelectedItem().toString()+"&search="+searchTV.getText());
+                    }
+                }
+            }
+        });
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.view_sildebar, sidebar).commit();
+
+        ImageButton side_menu = (ImageButton)findViewById(R.id.btn_sidebar7);
+        side_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sidebar.showMenu();
+            }
+        });
+
 
         // 어댑터 만들기 -> 3요소 필요 (위치, 디자인, 데이터)
         adapter = new Custom_Adapter(search.this, //위치
@@ -89,108 +200,29 @@ public class search extends AppCompatActivity implements View.OnClickListener {
 
         listView.setAdapter(adapter);
 
-        new NetworkSearch((Custom_Adapter) listView.getAdapter()).execute(""); // 전체 불러오기
-
-        /*view = (View)findViewById(R.id.toTheDetail1);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-
-                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.shop_detail");
-
-                intent.setComponent(name);
-                startActivityForResult(intent, 101);
-            }
-        });*/
-    }
-    private void addSideView(){
-
-        sidebar sidebar = new sidebar(mContext);
-        sideLayout.addView(sidebar);
-
-        viewLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        outsidebar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                closeMenu();
-            }
-        });
-
-        sidebar.setEventListener(new sidebar.EventListener() {
-
-            @Override
-            public void btnCancel() {
-                Log.e(TAG, "btnCancel");
-                closeMenu();
-            }
-
-            @Override
-            public void btnLevel1() {
-                Log.e(TAG, "btnLevel1");
-
-                closeMenu();
-            }
-
-            @Override
-            public void btnLogin(){
-                Log.e(TAG, "btnLogin");
-
-                closeMenu();
-
-                Intent intent1 = new Intent();
-
-                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.Login");
-
-                intent1.setComponent(name);
-                startActivityForResult(intent1, 101);
-            }
-        });
-    }
-
-
-    @Override
-    public void onClick(View view) {
-
-        switch (view.getId()){
-
-            case R.id.btn_sidebar7 :
-
-                showMenu();
-                break;
-        }
+        new NetworkSearch((Custom_Adapter) listView.getAdapter(), search.this).execute(""); // 전체 불러오기
 
     }
-
-    public void closeMenu(){
-
+    public void closeMenu(Animation animation) {
         isMenuShow = false;
-        Animation slide = AnimationUtils.loadAnimation(mContext, R.anim.sidebar_hidden);
-        sideLayout.startAnimation(slide);
+        sideLayout.startAnimation(animation);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 viewLayout.setVisibility(View.GONE);
-                viewLayout.setEnabled(false);
-                mainLayout.setEnabled(true);
+                viewLayout.setClickable(false);
+                mainLayout.setClickable(true);
             }
         }, 450);
     }
 
-    public void showMenu(){
+    public void showMenu(Animation animation){
 
         isMenuShow = true;
-        Animation slide = AnimationUtils.loadAnimation(this, R.anim.sidebar_show);
-        sideLayout.startAnimation(slide);
+        sideLayout.startAnimation(animation);
         viewLayout.setVisibility(View.VISIBLE);
-        viewLayout.setEnabled(true);
-        mainLayout.setEnabled(false);
+        viewLayout.setClickable(true);
+        mainLayout.setClickable(false);
         Log.e(TAG, "메뉴버튼 클릭");
     }
 }

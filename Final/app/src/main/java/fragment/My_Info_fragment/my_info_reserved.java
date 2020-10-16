@@ -22,11 +22,15 @@ import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executors;
 
+import res.resources;
+import model.ReservationVo;
 import res.calendar_deco.EventDecorator;
 import res.calendar_deco.SaturdayDecorator;
 import res.calendar_deco.SundayDecorator;
@@ -35,13 +39,15 @@ import res.calendar_deco.OneDayDecorator;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class my_info_reserved extends Fragment {
+public class my_info_reserved extends Fragment implements resources {
 
     String time,kcal,menu;
     private final OneDayDecorator oneDayDecorator = new OneDayDecorator();
     Cursor cursor;
     MaterialCalendarView calendarView;
 
+    ArrayList<ReservationVo> reserveList;
+    String[] result;
 
     public my_info_reserved() {
         // Required empty public constructor
@@ -68,9 +74,26 @@ public class my_info_reserved extends Fragment {
                 oneDayDecorator
         );
 
-        String[] result = {"2020,10,11","2020,08,25","2020,09,11","2020,09,18","2020,09,30"};
 
-        new ApiSimulator(result).executeOnExecutor(Executors.newSingleThreadExecutor());
+        reserveList = (ArrayList<ReservationVo>)gets.get("reservation");
+
+
+
+        /*String[] result = {"2020,10,11","2020,08,25","2020,09,11","2020,09,18","2020,09,30"};*/
+        try {
+             result = new String [reserveList.size()];
+            for (int i = 0; i < reserveList.size(); i++) {
+                String dates = reserveList.get(i).getRes_date().substring(0,10);
+                Log.e("dates: ", dates+"");
+                result[i] = dates;
+            }
+            new ApiSimulator(result).executeOnExecutor(Executors.newSingleThreadExecutor());
+        }catch (Exception e){
+
+        }
+
+
+
 
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
@@ -89,7 +112,33 @@ public class my_info_reserved extends Fragment {
                 calendarView.clearSelection();
 
                 TextView text = (TextView)rootView.findViewById(R.id.my_info_txt);
-                text.setText(choose_Date);
+
+                for(int j = 0; j < reserveList.size(); j++) {
+
+                    String[] time1 = result[j].split("-");
+
+                    int year = Integer.parseInt(time1[0]);
+                    int month = Integer.parseInt(time1[1]);
+                    int dayy = Integer.parseInt(time1[2]);
+
+                    /*String dates = reserveList.get(j).getRes_date().substring(0,10);*/
+                    String resTime = reserveList.get(j).getRes_date().substring(10);
+                    if(Year == year && Month == month && Day == dayy) {
+                        String shopName = reserveList.get(j).getShop_title();
+                        int noPeople = reserveList.get(j).getRes_customer();
+                        Log.d("choose_Date : ", choose_Date+"");
+                        Log.d("shopName : ", shopName+"");
+                        Log.d("resTime : ", resTime+"");
+                        Log.d("noPeople : ", noPeople+"");
+
+                        text.setText("일시 : " + choose_Date + "\n" + "가게 이름 : " + shopName + "\n" +"예약 시간 : " + resTime + "\n" + "인원 수 : " + noPeople);
+                        return;
+                    }
+                    else {
+                        text.setText("예약정보가 없습니다.");
+                        Log.e("예약 X", "안걸림");
+                    }
+                }
 
             }
         });
@@ -128,7 +177,7 @@ public class my_info_reserved extends Fragment {
 
                 //                CalendarDay day = CalendarDay.from(calendar);
                 //                Log.e("데이터 확인","day"+day);
-                String[] time = result[i].split(",");
+                String[] time = result[i].split("-");
 
                 int year = Integer.parseInt(time[0]);
                 int month = Integer.parseInt(time[1]);

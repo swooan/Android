@@ -80,32 +80,33 @@
         android:textSize="20dp"
         android:id="@+id/txt_search"/>
 
-    <ImageView
-        android:id="@+id/img_reservation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/center_horizontal"
-        android:layout_alignBottom="@id/img_search"
-        android:layout_marginLeft="60dp"
-        android:layout_toRightOf="@id/center_vertical"
-        android:adjustViewBounds="true"
-        android:maxWidth="100dp"
-        android:maxHeight="100dp"
-        android:src="@drawable/calendar" />
+        <ImageView
+            android:id="@+id/img_reservation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/center_horizontal"
+            android:layout_alignBottom="@id/img_search"
+            android:layout_marginLeft="53dp"
+            android:layout_marginBottom="1dp"
+            android:layout_toRightOf="@id/center_vertical"
+            android:adjustViewBounds="true"
+            android:maxWidth="100dp"
+            android:maxHeight="100dp"
+            android:src="@drawable/calendar" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/center_horizontal"
-        android:layout_toRightOf="@id/center_vertical"
-        android:layout_marginLeft="70dp"
-        android:layout_marginBottom="30dp"
-        android:text="예약 정보"
-        android:textColor="@color/button"
-        android:textSize="20dp"
-        android:id="@+id/txt_reservation"/>
+        <TextView
+            android:id="@+id/txt_reservation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/center_horizontal"
+            android:layout_marginLeft="63dp"
+            android:layout_marginBottom="30dp"
+            android:layout_toRightOf="@id/center_vertical"
+            android:text="예약 정보"
+            android:textColor="@color/button"
+            android:textSize="20dp" />
 
-    <ImageView
+        <ImageView
         android:id="@+id/img_qr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -119,42 +120,49 @@
         android:maxHeight="100dp"
         android:src="@drawable/qr" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/center_horizontal"
-        android:layout_marginLeft="68dp"
-        android:layout_marginTop="160dp"
-        android:text="QR 인증"
-        android:textColor="@color/button"
-        android:textSize="20dp"
-        android:id="@+id/txt_qr"/>
+        <TextView
+            android:id="@+id/txt_qr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/center_horizontal"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="62dp"
+            android:layout_marginLeft="62dp"
+            android:layout_marginTop="159dp"
+            android:text="QR 인증"
+            android:textColor="@color/button"
+            android:textSize="20dp" />
 
-    <ImageView
-        android:id="@+id/img_how"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/center_horizontal"
-        android:layout_alignLeft="@id/img_reservation"
-        android:layout_marginTop="40dp"
-        android:layout_toRightOf="@id/center_vertical"
-        android:adjustViewBounds="true"
-        android:maxWidth="100dp"
-        android:maxHeight="100dp"
-        android:src="@drawable/how" />
+        <ImageView
+            android:id="@+id/img_how"
+            android:layout_width="99dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/center_horizontal"
+            android:layout_alignLeft="@id/img_reservation"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="40dp"
+            android:layout_toRightOf="@id/center_vertical"
+            android:adjustViewBounds="true"
+            android:maxWidth="100dp"
+            android:maxHeight="100dp"
+            android:src="@drawable/point" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/center_horizontal"
-        android:layout_marginLeft="280dp"
-        android:layout_marginTop="157dp"
-        android:text="설명서"
-        android:textColor="@color/button"
-        android:textSize="20dp"
-        android:id="@+id/txt_how"/>
+        <TextView
+            android:id="@+id/txt_how"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/center_horizontal"
+            android:layout_marginStart="130dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="155dp"
+            android:layout_toEndOf="@+id/txt_qr"
+            android:layout_toRightOf="@+id/txt_qr"
+            android:text="포인트 충전"
+            android:textColor="@color/button"
+            android:textSize="20dp" />
 
-    <ImageButton
+        <ImageButton
         android:id="@+id/btn_sidebar1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

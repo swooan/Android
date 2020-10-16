@@ -1,14 +1,18 @@
 package com.example.final_app;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import res.network.NetworkPay;
+import res.resources;
 
 public class how extends Activity {
     TextView txtText;
@@ -22,23 +26,27 @@ public class how extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.how);
 
-        //UI 객체생성
-        //txtText = (TextView)findViewById(R.id.txtText);
+        final EditText pointET = (EditText)findViewById(R.id.pointET);
 
-        //데이터 가져오기
-        //Intent intent = getIntent();
-        //String data = intent.getStringExtra("data");
-        //txtText.setText(data);
+        Button ok = (Button) findViewById(R.id.ok);
+
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(TextUtils.isEmpty(pointET.getText())){
+                    Toast.makeText(how.this, "충전하실 금액을 입력해주세요", Toast.LENGTH_SHORT).show();
+                }else{
+                    new NetworkPay(how.this, 1, Integer.parseInt(pointET.getText().toString())).execute("?user_email="+ resources.gets.get("user_email")+"&point="+pointET.getText());
+                    finish();
+                }
+
+            }
+        });
     }
 
     //확인 버튼 클릭
     public void mOnClose(View v){
-        //데이터 전달하기
-        Intent intent = new Intent();
-        intent.putExtra("result", "Close Popup");
-        setResult(RESULT_OK, intent);
 
-        //액티비티(팝업) 닫기
         finish();
     }
 

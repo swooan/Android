@@ -44,100 +44,62 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="410dp">
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:fillViewport="true">
 
-            <LinearLayout
+            <ListView
+                android:id="@+id/listView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="@drawable/border_all" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="@drawable/border_all" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="@drawable/border_all" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="@drawable/border_all" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="@drawable/border_all" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="@drawable/border_all" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="@drawable/border_all" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="@drawable/border_all" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="@drawable/border_all" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="25dp"
-                    android:background="@drawable/border_all" />
-
-            </LinearLayout>
         </ScrollView>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@color/main"
             android:gravity="center|right"
             android:orientation="horizontal">
 
-            <View
-                android:layout_width="250dp"
+            <ScrollView
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/border_all"
-                android:padding="10dp" />
+                android:layout_weight="3"
+                android:fillViewport="true">
 
-            <Button
-                android:layout_width="130dp"
-                android:layout_height="60dp"
-                android:layout_marginRight="10dp"
-                android:background="@color/button"
-                android:text="주문하기"
-                android:textColor="@color/white"
-                android:textSize="17dp"
-                android:textStyle="bold" />
+                <ListView
+                    android:id="@+id/order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/sum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="총 합계\n0원" />
+
+                <Button
+                    android:id="@+id/pay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/button"
+                    android:text="주문하기"
+                    android:textColor="@color/white"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

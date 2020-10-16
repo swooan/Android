@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import fragment.detail_fragment.detail_info;
+import fragment.detail_fragment.detail_map;
 import fragment.detail_fragment.detail_reservation;
 import fragment.detail_fragment.detail_review;
 
@@ -25,6 +26,7 @@ public class detail_VPAdapter extends FragmentStatePagerAdapter {
             case 0: return new detail_info();
             case 1: return new detail_reservation();
             case 2: return new detail_review();
+            case 3: return new detail_map();
             default: return null;
         }
     }

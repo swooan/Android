@@ -14,30 +14,55 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
-import res.my_info_VPAdapter;
+import java.util.ArrayList;
 
-public class my_Info extends AppCompatActivity implements View.OnClickListener {
+import model.ShopUserVo;
+import res.my_info_VPAdapter;
+import fragment.sidebar3;
+import res.resources;
+
+public class my_Info extends AppCompatActivity implements resources{
+
+    private String TAG = "my_info";
+
+    private Context mContext = my_Info.this;
+
+    private ViewGroup mainLayout;   //사이드 나왔을때 클릭방지할 영역
+    private ViewGroup viewLayout;   //전체 감싸는 영역
+    private ViewGroup sideLayout;   //사이드바만 감싸는 영역
+    private ViewGroup outsidebar;
+
+    private Boolean isMenuShow = false;
+    private Boolean isExitFlag = false;
+
+    private sidebar3 sidebar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_info);
 
-        findViewById(R.id.btn_sidebar4).setOnClickListener(this);
-
         outsidebar = findViewById(R.id.out_sidebar);
         mainLayout = findViewById(R.id.id_main);
         viewLayout = findViewById(R.id.fl_silde);
         sideLayout = findViewById(R.id.view_sildebar);
 
+        sidebar = new sidebar3(this);
 
-        addSideView();
+        getSupportFragmentManager().beginTransaction().add(R.id.view_sildebar, sidebar).commit();
+        ImageButton side_menu = (ImageButton)findViewById(R.id.btn_sidebar4);
+        side_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sidebar.showMenu();
+            }
+        });
 
-        Intent intent = new Intent(this, Loading.class);
-        startActivity(intent);
 
         TabLayout tab = findViewById(R.id.my_info_tab);
 
@@ -54,6 +79,9 @@ public class my_Info extends AppCompatActivity implements View.OnClickListener {
         tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                if(tab.getPosition() == 1 && !(Boolean) resources.gets.get("payment_info")){
+                    Toast.makeText(my_Info.this, "결제 내역이 없습니다", Toast.LENGTH_SHORT).show();
+                }
                 view.setCurrentItem(tab.getPosition());
             }
 
@@ -69,17 +97,7 @@ public class my_Info extends AppCompatActivity implements View.OnClickListener {
         });
     }
 
-    private String TAG = "my_info";
 
-    private Context mContext = my_Info.this;
-
-    private ViewGroup mainLayout;   //사이드 나왔을때 클릭방지할 영역
-    private ViewGroup viewLayout;   //전체 감싸는 영역
-    private ViewGroup sideLayout;   //사이드바만 감싸는 영역
-    private ViewGroup outsidebar;
-
-    private Boolean isMenuShow = false;
-    private Boolean isExitFlag = false;
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -95,100 +113,34 @@ public class my_Info extends AppCompatActivity implements View.OnClickListener {
     public void onBackPressed() {
 
         if (isMenuShow) {
-            closeMenu();
+            sidebar.closeMenu();
         }
         else {
             finish();
         }
     }
 
-    private void addSideView(){
 
-        sidebar sidebar = new sidebar(mContext);
-        sideLayout.addView(sidebar);
-
-        viewLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        outsidebar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                closeMenu();
-            }
-        });
-
-        sidebar.setEventListener(new sidebar.EventListener() {
-
-            @Override
-            public void btnCancel() {
-                Log.e(TAG, "btnCancel");
-                closeMenu();
-            }
-
-            @Override
-            public void btnLevel1() {
-                Log.e(TAG, "btnLevel1");
-
-                closeMenu();
-            }
-
-            @Override
-            public void btnLogin(){
-                Log.e(TAG, "btnLogin");
-
-                closeMenu();
-
-                Intent intent1 = new Intent();
-
-                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.Login");
-
-                intent1.setComponent(name);
-                startActivityForResult(intent1, 101);
-            }
-        });
-    }
-
-
-    @Override
-    public void onClick(View view) {
-
-        switch (view.getId()){
-
-            case R.id.btn_sidebar4 :
-
-                showMenu();
-                break;
-        }
-
-    }
-
-    public void closeMenu(){
-
+    public void closeMenu(Animation animation) {
         isMenuShow = false;
-        Animation slide = AnimationUtils.loadAnimation(mContext, R.anim.sidebar_hidden);
-        sideLayout.startAnimation(slide);
+        sideLayout.startAnimation(animation);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 viewLayout.setVisibility(View.GONE);
-                viewLayout.setEnabled(false);
-                mainLayout.setEnabled(true);
+                viewLayout.setClickable(false);
+                mainLayout.setClickable(true);
             }
         }, 450);
     }
 
-    public void showMenu(){
+    public void showMenu(Animation animation){
 
         isMenuShow = true;
-        Animation slide = AnimationUtils.loadAnimation(this, R.anim.sidebar_show);
-        sideLayout.startAnimation(slide);
+        sideLayout.startAnimation(animation);
         viewLayout.setVisibility(View.VISIBLE);
-        viewLayout.setEnabled(true);
-        mainLayout.setEnabled(false);
+        viewLayout.setClickable(true);
+        mainLayout.setClickable(false);
         Log.e(TAG, "메뉴버튼 클릭");
     }
 }

@@ -21,41 +21,67 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!--구글&네이버 지도 관련-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/bobpool_icon"
-        android:label="밥풀"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/bobpool_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".personal_info" />
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <activity
+            android:name=".roulette"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ladder_LadderGameActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ladder_MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ladder_TabViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".search_menu"
+            android:screenOrientation="portrait" />
+        <activity android:name=".personal_info"
+            android:screenOrientation="portrait"/>
+
+        <!--네이버 지도 관련 2020.09.24-->
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="cyozvucbzs" />
+
+        <!--구글 지도 관련 2020.10.02-->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA_rLdW26Zx5XUPBQT6Kad5VPKaFXvAw1A" />
 
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1" />
 
-        <activity android:name=".Login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".Login"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".additional_order"
-            android:usesCleartextTraffic="true" />
+            android:usesCleartextTraffic="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".after_qr"
-            android:usesCleartextTraffic="true" />
-        <activity android:name=".sidebar" />
-        <activity
-            android:name=".Loading"
-            android:theme="@android:style/Theme.Dialog" />
+            android:usesCleartextTraffic="true"
+            android:screenOrientation="portrait"/>
+        <!--<activity android:name=".sidebar" />-->
         <activity
             android:name=".how"
-            android:theme="@android:style/Theme.Dialog" />
+            android:theme="@android:style/Theme.Dialog"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".qr"
             android:screenOrientation="fullSensor"
@@ -65,17 +91,33 @@
                 android:name="com.google.android.gms.vision.DEPENDENCIES"
                 android:value="barcode" />
         </activity>
-        <activity android:name=".CaptureActivity" />
+        <activity android:name=".CaptureActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
             tools:replace="android:screenOrientation" />
-        <activity android:name=".shop_detail" />
-        <activity android:name=".my_Info" />
-        <activity android:name=".search" />
-        <activity android:name=".reservation" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".shop_detail"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".my_Info"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".search"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Search_map"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".reservation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".payment"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Join"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -84,7 +126,8 @@
         </activity>
         <activity
             android:name=".opening"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

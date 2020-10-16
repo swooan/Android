@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Final_App</string>
+    <string name="app_name">밥풀</string>
 
     <string name="hint_id">ID를 입력하세요</string>
     <string name="hint_password">패스워드를 입력하세요</string>
@@ -12,7 +12,7 @@
     <string name="logo">밥풀</string>
     <string name="choose_location">지역을 선택해주세요</string>
     <string name="choose_food">음식 종류를 선택해주세요</string>
-    <string name="search">검색어를 입력하세요</string>
+    <string name="search">검색어 입력</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

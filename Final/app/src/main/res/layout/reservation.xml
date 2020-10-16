@@ -44,9 +44,8 @@
         <FrameLayout
             android:id="@+id/reserv_frame"
             android:layout_width="match_parent"
-            android:layout_height="480dp"
-            android:layout_marginVertical="10dp">
-
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
         </FrameLayout>
 
     </LinearLayout>

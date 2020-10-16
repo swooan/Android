@@ -11,15 +11,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+
+import fragment.sidebar3;
 
 import fragment.reservation_fragment.reserv_complete;
 import fragment.reservation_fragment.reserv_order;
 import fragment.reservation_fragment.reserv_payment;
 import fragment.reservation_fragment.reserv_simple;
+import model.ShopVo;
+import res.resources;
 
-public class reservation extends AppCompatActivity implements View.OnClickListener{
+public class reservation extends AppCompatActivity{
 
     reserv_simple simple;
     reserv_order order;
@@ -30,6 +37,7 @@ public class reservation extends AppCompatActivity implements View.OnClickListen
     private ViewGroup viewLayout;   //전체 감싸는 영역
     private ViewGroup sideLayout;   //사이드바만 감싸는 영역
     private ViewGroup outsidebar;
+    private sidebar3 sidebar = new sidebar3(this);
 
     private Boolean isMenuShow = false;
     private Boolean isExitFlag = false;
@@ -37,6 +45,8 @@ public class reservation extends AppCompatActivity implements View.OnClickListen
     private String TAG = "reservation";
 
     private Context mContext = reservation.this;
+    public String shop_title, shop_id;
+    public ArrayList<String> tempArr = new ArrayList<String>();
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -52,7 +62,7 @@ public class reservation extends AppCompatActivity implements View.OnClickListen
     public void onBackPressed() {
 
         if (isMenuShow) {
-            closeMenu();
+            sidebar.closeMenu();
         }
         else{
             finish();
@@ -64,15 +74,22 @@ public class reservation extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reservation);
 
-        findViewById(R.id.btn_sidebar6).setOnClickListener(this);
-
         outsidebar = findViewById(R.id.out_sidebar);
         mainLayout = findViewById(R.id.id_main);
         viewLayout = findViewById(R.id.fl_silde);
         sideLayout = findViewById(R.id.view_sildebar);
+        shop_title = getIntent().getExtras().getString("shop_title");
+        shop_id = getIntent().getExtras().getString("shop_id");
 
+        getSupportFragmentManager().beginTransaction().add(R.id.view_sildebar, sidebar).commit();
 
-        addSideView();
+        ImageButton side_menu = (ImageButton)findViewById(R.id.btn_sidebar6);
+        side_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sidebar.showMenu();
+            }
+        });
 
         simple = new reserv_simple();
         order = new reserv_order();
@@ -97,99 +114,26 @@ public class reservation extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-
-
-
-
-
-
-    private void addSideView(){
-
-        sidebar sidebar = new sidebar(mContext);
-        sideLayout.addView(sidebar);
-
-        viewLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        outsidebar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                closeMenu();
-            }
-        });
-
-        sidebar.setEventListener(new sidebar.EventListener() {
-
-            @Override
-            public void btnCancel() {
-                Log.e(TAG, "btnCancel");
-                closeMenu();
-            }
-
-            @Override
-            public void btnLevel1() {
-                Log.e(TAG, "btnLevel1");
-
-                closeMenu();
-            }
-
-            @Override
-            public void btnLogin(){
-                Log.e(TAG, "btnLogin");
-
-                closeMenu();
-
-                Intent intent1 = new Intent();
-
-                ComponentName name = new ComponentName("com.example.final_app", "com.example.final_app.Login");
-
-                intent1.setComponent(name);
-                startActivityForResult(intent1, 101);
-            }
-        });
-    }
-
-
-    @Override
-    public void onClick(View view) {
-
-        switch (view.getId()){
-
-            case R.id.btn_sidebar6 :
-
-                showMenu();
-                break;
-        }
-
-    }
-
-    public void closeMenu(){
-
+    public void closeMenu(Animation animation) {
         isMenuShow = false;
-        Animation slide = AnimationUtils.loadAnimation(mContext, R.anim.sidebar_hidden);
-        sideLayout.startAnimation(slide);
+        sideLayout.startAnimation(animation);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 viewLayout.setVisibility(View.GONE);
-                viewLayout.setEnabled(false);
-                mainLayout.setEnabled(true);
+                viewLayout.setClickable(false);
+                mainLayout.setClickable(true);
             }
         }, 450);
     }
 
-    public void showMenu(){
+    public void showMenu(Animation animation){
 
         isMenuShow = true;
-        Animation slide = AnimationUtils.loadAnimation(this, R.anim.sidebar_show);
-        sideLayout.startAnimation(slide);
+        sideLayout.startAnimation(animation);
         viewLayout.setVisibility(View.VISIBLE);
-        viewLayout.setEnabled(true);
-        mainLayout.setEnabled(false);
+        viewLayout.setClickable(true);
+        mainLayout.setClickable(false);
         Log.e(TAG, "메뉴버튼 클릭");
     }
 }
